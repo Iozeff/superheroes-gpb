@@ -1,28 +1,38 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as makeActions from './actions/makeActions';
+import Header from './header/index'
+import MainContent from './main-content/index'
+
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+        <div className="App">
+          {
+            (this.props.selectedHeroes && this.props.selectedHeroes.length) ? 
+            (<Header showHeroes={this.props.selectedHeroes}/>) : ''
+          }
+          <MainContent/>
+        </div>
     );
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    selectedHeroes: state.select
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    makeActions: bindActionCreators(makeActions, dispatch)
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

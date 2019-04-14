@@ -1,14 +1,234 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
+
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Roboto', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.hidden {
+  display: none!important;
+}
+
+.header {
+  padding: 32px 20px 28px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-y: scroll;
+  box-sizing: border-box;
+  height: 168px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), linear-gradient(180deg, #555761 -51.19%, #2B2D35 100%);
+}
+
+.header .selected-hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 72px;
+  border-radius: 8px;
+  padding: 0 8px;
+}
+
+.header .selected-hero:first-child {
+  padding-left: unset;
+}
+
+.header .selected-hero:last-child img {
+  
+  border-radius: 8px;
+  margin-right:10px;
+}
+
+.header .selected-hero img {
+  width: 72px;
+  height: 100px;
+  border-radius: 8px;
+  margin-right: 10px;
+}
+
+.header .selected-hero .close-button {
+  position: absolute;
+    width: 24px;
+    height: 24px;
+    right: 0px;
+    top: -12px;
+    background: #000000;
+    border: 2px solid #FFFFFF;
+    border-radius: 50px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.header .selected-hero .hero-count {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  /* green */
+  background: #00C35A;
+  border-radius: 20px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: normal;
+  color: #FFFFFF;
+}
+
+.selected-hero:first-child .hero-count {
+  left: 4px;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  justify-content: space-between;
+  padding: 16px 20px 11px 20px;
+  background: linear-gradient(180deg, #31333B 13.26%, #363945 74.59%, #2B2D35 100%);
+}
+
+.search {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  width: 100%;
+  padding: 19px 14px;
+  background: #4B4E5C;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.search input {
+  width: 100%;
+  height: 100%;
+  border-color: unset;
+  background: unset;
+  border: unset;
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: normal;
+  color: #FFFFFF;
+  outline: none;
+}
+
+.search input[placeholder],
+.search input[type="search"]::-webkit-input-placeholder,
+.search input[type="search"]:-moz-placeholder {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: normal;
+  color: #FFFFFF;
+}
+
+.icon-loupe {
+  width: 24px;
+  height: 24px;
+}
+
+.icon-loupe img {
+  width: 100%;
+  height: 100%;
+}
+
+.select {
+  display: flex;
+  flex-direction: row;
+  height: 75px;
+  justify-content: center;
+  align-items: center;
+}
+
+.heroes-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.hero {
+  display: flex;
+  flex-direction: column;
+  width: 72px;
+  border-radius: 8px;
+  padding: 0 16px 16px 0;
+}
+
+.hero:last-child {
+  margin-right: unset;
+}
+
+
+.hero p {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: normal;
+  text-align: center;
+  color: #FFFFFF;
+  padding: 5px 0 0 0;
+  margin: 0;
+}
+
+.hero img {
+  width: 100%;
+  height: 100px;
+  border-radius: 8px;
+}
+
+.opacity-logo {
+  opacity: 0.2;
+}
+
+.nothing {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: normal;
+  text-align: center;
+  color: #FFFFFF;
+  width: 100%;
+  text-align: center;
+}
+
+@media (max-width: 320px) {
+  .hero {
+    width: 64px;
+    padding: 0 8px 16px 0;
+  }
+}
+
+@media (min-width: 767px) {
+  .main-content {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: start;
+  }
+  .heroes-list {
+    padding-top: 28px;
+  }
+  .search {
+    max-width: 336px;
+    max-height: 56px;
+  }
+  .select {
+    flex: 0 0 auto;
+  }
+  #dc img {
+    padding-right: 45px;
+  }
 }
